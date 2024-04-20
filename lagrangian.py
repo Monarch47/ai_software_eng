@@ -2,6 +2,8 @@ from file_writing import write_to_text_file
 from datetime import datetime
 from file_read import read_file
 import researcher
+import planning
+
 # Time stamp
 def current_time():
     now = datetime.now()
@@ -46,7 +48,18 @@ write_to_text_file(folder_path, file_name, text_to_write)
 
 #researching
 prompt_research = read_file(folder_path, file_name)
-print(researcher.research(prompt_research))
+response = researcher.research(prompt_research)
+researcher_text = "research.txt"
+write_to_text_file(folder_path,researcher_text,response)
+
+#planning tech stuff
+prompt_planning = read_file(folder_path,researcher_text)
+response = planning.planning(prompt_planning)
+planning_text = "planning.txt"
+write_to_text_file(folder_path,planning_text,response)
+
+
+
 
 
 
