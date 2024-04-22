@@ -69,11 +69,7 @@ print("Hey!, Lagrangian this side")
 while True:
     ins = input("Prompts: ")
     print(chat.conv(ins))
-
     
-
-
-
 
 
 
