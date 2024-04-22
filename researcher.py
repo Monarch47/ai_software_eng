@@ -6,7 +6,7 @@ $ pip install google-generativeai
 
 import google.generativeai as genai
 
-genai.configure(api_key="Your_api_key")
+genai.configure(api_key="AIzaSyC6ZIlEOr6X3dqMIPOdMotUiFhoTsfqP54")
 
 # Set up the model
 generation_config = {
@@ -49,6 +49,11 @@ Programming language: Python,html,css,javascript
 if specific language is asked in prompt then use that only"""
 
 def research(prompt):
-    convo.send_message(f"context: {context}, language:{language_preference}, prompt: {prompt}")
+    convo.send_message(prompt)
     response = convo.last.text
     return response
+
+
+while True:
+    ins = input("Prompt: ")
+    print(research(ins))
