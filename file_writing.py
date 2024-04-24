@@ -39,5 +39,3 @@ def append_to_text_file(folder_path, file_name, text_to_append):
     # Appending to the file
     with open(file_path, 'a') as file:
         file.write(text_to_append)
-
-    print(f'Text has been appended to {file_path}')

@@ -1,15 +1,15 @@
-from file_writing import write_to_text_file
+import file_writing 
 import subprocess
 from datetime import datetime
 from file_read import read_file
 import chat
-
+import os
 #Functions
 
 # Time stamp
 def current_time():
     now = datetime.now()
-    return now.strftime("%Y-%m-%d %H:%M:%S")
+    return now.strftime("%Y-%m-%d %H:%M")
 
 def parse_after(text, after):
     """
@@ -31,6 +31,25 @@ def parse_after(text, after):
     else:
         # If the text is not found, return an empty string
         return ""
+#directory creator using json
+def build_from_json(structure, base_path="."):
+    """
+    Builds a directory structure based on the provided JSON structure.
+    """
+    for element, content in structure.items():
+        element_path = os.path.join(base_path, element)
+        if isinstance(content, dict) and content:  # Checks if it's a non-empty dict
+            try:
+                os.makedirs(element_path, exist_ok=True)  # Creates the directory, ignores if it exists
+            except OSError as e:
+                print(f"Failed to create directory {element_path}: {e}")
+            build_from_json(content, element_path)  # Recursive call for nested directories
+        else:
+            try:
+                open(element_path, 'a').close()  # Create empty files
+            except IOError as e:
+                print(f"Failed to create file {element_path}: {e}")
+
 
 # Open a PowerShell process
 def run_powershell_command(user_input):
@@ -59,17 +78,19 @@ def add_code_with_powershell(code, filename="example.py"):
     except subprocess.CalledProcessError as e:
         print(f"An error occurred: {e}")
 
+#Directory creator for the project
+def project_creator(project_name):
+    time = current_time()
+    file_writing.write_to_text_file(f"{os.getcwd()}/{[project_name]}",project_name,time)
+#to create a chat history
+def chat_history(project_name,history):
+    his = f"""chat history: {history}
+            time: {current_time}"""
+    file_writing.append_to_text_file(f"{os.getcwd()}/{[project_name]}",project_name,his)
 
 
-
-print("Hey!, Lagrangian this side")
-
-#chat
-
-while True:
-    ins = input("Prompts: ")
-    print(chat.conv(ins))
     
+
 
 
 

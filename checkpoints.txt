@@ -1,0 +1,2 @@
+2024-04-25 02:21:34.762575: Created directory D:\Ai-software_eng\my_project
+2024-04-25 02:21:43.431682: Created directory D:\Ai-software_eng\my_project

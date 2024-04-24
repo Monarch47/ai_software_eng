@@ -1,16 +1,10 @@
-"""
-At the command line, only need to run once to install the package via pip:
-
-$ pip install google-generativeai
-"""
-
 import google.generativeai as genai
 
-genai.configure(api_key="Your_api_key")
+genai.configure(api_key="AIzaSyC6ZIlEOr6X3dqMIPOdMotUiFhoTsfqP54")
 
 # Set up the model
 generation_config = {
-  "temperature": 1,
+  "temperature": 0.1,
   "top_p": 0.95,
   "top_k": 0,
   "max_output_tokens": 8192,
@@ -42,12 +36,9 @@ model = genai.GenerativeModel(model_name="gemini-1.5-pro-latest",
 convo = model.start_chat(history=[
 ])
 
-#create a dependency manager file
-prompt = "according the context give me name of the dependency management file keeping in mind the best tech practices. (give me only the file name nothing else)"
 
-def file_name(context):
-    convo.send_message(f"context: {context}, prompt: {prompt}")
+
+def sen_analysis(chat_history):
+    convo.send_message(f"context: {context}, prompt:{chat_history}")
     response = convo.last.text
     return response
-
-
