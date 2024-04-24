@@ -2,7 +2,7 @@ import google.generativeai as genai
 import subprocess
 import file_read
 import file_writing
-genai.configure(api_key="AIzaSyC6ZIlEOr6X3dqMIPOdMotUiFhoTsfqP54")
+genai.configure(api_key="your-api-key")
 # Set up the model
 generation_config = {
   "temperature": 1.5,
