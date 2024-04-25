@@ -2,7 +2,7 @@ import google.generativeai as genai
 import subprocess
 import file_read
 import file_writing
-genai.configure(api_key="your-api-key")
+genai.configure(api_key="AIzaSyC6ZIlEOr6X3dqMIPOdMotUiFhoTsfqP54")
 # Set up the model
 generation_config = {
   "temperature": 1.5,
@@ -168,47 +168,47 @@ def code_generation(prompt):
     response = convo.last.text
     return response
 
-# Example usage
-project_structure = {
-    "my_project": {
-        "scripts": {
-            "process_data.py": {},
-            "generate_report.py": {}
-        },
-        "data": {
-            "raw": {},
-            "processed": {}
-        },
-        "main.py": {}
-    }
-}
+# # Example usage
+# project_structure = {
+#     "my_project": {
+#         "scripts": {
+#             "process_data.py": {},
+#             "generate_report.py": {}
+#         },
+#         "data": {
+#             "raw": {},
+#             "processed": {}
+#         },
+#         "main.py": {}
+#     }
+# }
 
-base_path = "D:\Ai-software_eng"
-initialize_project(project_structure, base_path)
+# base_path = "C:/Users/Parth/gem-ui/ai_software_eng"
+# initialize_project(project_structure, base_path)
 
-# Assuming we are starting to code each module
-module_paths = [
-    f"{base_path}/my_project/scripts/process_data.py",
-    f"{base_path}/my_project/scripts/generate_report.py",
-    f"{base_path}/my_project/main.py"
-]
+# # Assuming we are starting to code each module
+# module_paths = [
+#     f"{base_path}/my_project/scripts/process_data.py",
+#     f"{base_path}/my_project/scripts/generate_report.py",
+#     f"{base_path}/my_project/main.py"
+# ]
 
-for path in module_paths:
-    last_checkpoint = read_checkpoint()
-    if last_checkpoint is None or path > last_checkpoint:
-        prompt = f"Write Python code for {path.split('/')[-1]}"
-        code = code_generation(prompt)
-        with open(path, 'w') as file:
-            file.write(code)
-        write_checkpoint(path)
+# for path in module_paths:
+#     last_checkpoint = read_checkpoint()
+#     if last_checkpoint is None or path > last_checkpoint:
+#         prompt = f"Write Python code for {path.split('/')[-1]}"
+#         code = code_generation(prompt)
+#         with open(path, 'w') as file:
+#             file.write(code)
+#         write_checkpoint(path)
 
-def execute_project(base_path):
-    """
-    Simulate executing the whole project to check integration.
-    """
-    try:
-        subprocess.run(['python', os.path.join(base_path, 'main.py')], check=True)
-        print("Project executed successfully.")
-    except subprocess.CalledProcessError as e:
-        print(f"An error occurred while executing the project: {e}")
+# def execute_project(base_path):
+#     """
+#     Simulate executing the whole project to check integration.
+#     """
+#     try:
+#         subprocess.run(['python', os.path.join(base_path, 'main.py')], check=True)
+#         print("Project executed successfully.")
+#     except subprocess.CalledProcessError as e:
+#         print(f"An error occurred while executing the project: {e}")
   
