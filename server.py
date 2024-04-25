@@ -1,7 +1,7 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
-from chat import conv
-
+from chat import chat
+import markdown
 app = Flask(__name__)
 CORS(app)  # Enable CORS on all routes
 
@@ -20,9 +20,9 @@ def input_t():
     global last_response
     if request.is_json:
         data = request.get_json()
-        last_response = conv(data['message'])
+        last_response = chat(data['message'])
         print(last_response)
-        return last_response, 200
+        return markdown.markdown(last_response), 200
     return "Invalid data", 400
 
 @app.route('/input_m', methods=['POST'])

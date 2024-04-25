@@ -2,6 +2,7 @@ import google.generativeai as genai
 import subprocess
 import file_read
 import file_writing
+from sentiment_analysis import sen_analysis
 genai.configure(api_key="AIzaSyC6ZIlEOr6X3dqMIPOdMotUiFhoTsfqP54")
 # Set up the model
 generation_config = {
@@ -10,6 +11,7 @@ generation_config = {
   "top_k": 0,
   "max_output_tokens": 8192,
 }
+
 
 safety_settings = [
   {
@@ -168,6 +170,14 @@ def code_generation(prompt):
     response = convo.last.text
     return response
 
+model_selection = {
+    "research": researcher,
+    "code": code_generation,
+    "plan": chat_plannar,
+    "pass": conv
+}
+def chat(input):
+    return model_selection[sen_analysis(input).split(" ")[0]](input)
 # # Example usage
 # project_structure = {
 #     "my_project": {
