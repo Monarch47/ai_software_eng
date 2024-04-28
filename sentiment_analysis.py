@@ -41,13 +41,9 @@ context = """context: "Use sentiment analysis to detect your next move:
 Don't give anything else, and do not use markdown
 1) if you feel that in chat history now demands in depth research (not for trivial task only for difficult project)
 your response : 'research'
-2) if you feel that in chat history research part is now done, now we have to create workflow
-your response: 'plan'
-3) if you feel that in chat history now we have to make folder and directory before coding
-your response: 'terminal'
-4) If you  feel that in the chat history if you feel that everything is done now we just have to code 
+2) If you  feel that in the chat history if you feel that everything is done now we just have to code 
 your response: "code"
-5) And if you feel nothing from the above is happening
+3) And if you feel nothing from the above is happening
 Your response: "pass"
 """
 
